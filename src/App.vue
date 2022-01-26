@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    
+    <i class="fa fa-robot"></i>
   </div>
 </template>
 
