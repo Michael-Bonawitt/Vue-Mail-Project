@@ -31,3 +31,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Todo List
 
 - Bootstrap label classes not working for sidebar.
+- Inbox always active with navigation function.

@@ -39,7 +39,7 @@
 import { eventBus } from '../main'
 
 export default {
-    create() {
+    created() {
         eventBus.$on('changeView', (data) => {
             this.activeView = data.tag;
         })
