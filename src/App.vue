@@ -1,14 +1,22 @@
 <template>
   <div class="container">
-    <i class="fa fa-robot"></i>
+    <div class="mail-box">
+      <app-sidebar></app-sidebar>
+    </div>
   </div>
 </template>
 
 <script>
-
+import Sidebar from './components/Sidebar.vue'
 export default {
-  
+  components: {
+    appSidebar: Sidebar
+  }
 }
 </script>
+
+<style>
+@import './assets/css/style.css';
+</style>
 
 
