@@ -93,7 +93,7 @@ export default [
         type: 'outgoing',
         date: moment().subtract(7, 'days'),
         from: {
-            name: 'Bo Andersen',
+            name: 'Mike Bonawitt',
             email: 'info@codingexplained.com'
         },
         attachments: []
@@ -173,7 +173,7 @@ export default [
         type: 'outgoing',
         date: moment().subtract(100, 'days'),
         from: {
-            name: 'Bo Andersen',
+            name: 'Mike Bonawitt',
             email: 'info@codingexplained.com'
         },
         attachments: []
@@ -190,7 +190,7 @@ export default [
         type: 'outgoing',
         date: moment().subtract(4, 'months'),
         from: {
-            name: 'Bo Andersen',
+            name: 'Mike Bonawitt',
             email: 'info@codingexplained.com'
         },
         attachments: []
@@ -232,7 +232,7 @@ export default [
         type: 'outgoing',
         date: moment().subtract(6, 'months'),
         from: {
-            name: 'Bo Andersen',
+            name: 'Mike Bonawitt',
             email: 'info@codingexplained.com'
         },
         attachments: []

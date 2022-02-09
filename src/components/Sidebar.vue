@@ -12,22 +12,22 @@
         <ul class="inbox-nav">
             <li :class="{ active: activeView == 'app-inbox' }">
                 <a href="#" @click="navigate('app-inbox', 'Inbox')">
-                    <i class="fa fa-inbox"></i>Inbox<span class="label label-danger float-end">?</span>
+                    <i class="fa fa-inbox"></i>Inbox<span class="label label-danger float-end">{{ unreadMessages.length }}</span>
                 </a>
             </li>
             <li :class="{ active: activeView == 'app-sent' }">
                 <a href="#" @click="navigate('app-sent', 'Sent')">
-                    <i class="fa fa-envelope-o"></i>Sent <span class="label label-default float-end">?</span>
+                    <i class="fa fa-envelope-o"></i>Sent <span class="label label-default float-end">{{ sentMessages.length }}</span>
                 </a>
             </li>
             <li :class="{ active: activeView == 'app-important' }">
                 <a href="#" @click="navigate('app-important', 'Important')">
-                    <i class="fa fa-bookmark-o"></i>Important <span class="label label-warning float-end">?</span>
+                    <i class="fa fa-bookmark-o"></i>Important <span class="label label-warning float-end">{{ importantMessages.length }}</span>
                 </a>
             </li>
             <li :class="{ active: activeView == 'app-trash' }">
                 <a href="#" @click="navigate('app-trash', 'Trash')">
-                    <i class="fa fa-trash-o"></i>Trash <span class="label label-default float-end">?</span>
+                    <i class="fa fa-trash-o"></i>Trash <span class="label label-default float-end">{{ trashedMessages.length }}</span>
                 </a>
             </li>
             
@@ -39,6 +39,12 @@
 import { eventBus } from '../main'
 
 export default {
+    props: {
+        messages: {
+            type: Array,
+            required: true
+        }
+    },
     created() {
         eventBus.$on('changeView', (data) => {
             this.activeView = data.tag;
@@ -46,7 +52,7 @@ export default {
     },
     data() {
         return {
-            activeView: 'app-inbox' 
+            activeView: 'app-inbox'
         }
     },
     methods: {
@@ -55,6 +61,31 @@ export default {
                 tag: newView,
                 title: title
             })
+        },
+        view(eventBus) {
+            console.log(eventBus)
+        }
+    },
+    computed: {
+        unreadMessages() {
+            return this.messages.filter(function(message) {
+                return (message.type == 'incoming' && !message.isRead && !message.isDeleted)
+            });
+        },
+        sentMessages() {
+            return this.messages.filter(function(message) {
+                return (message.type == 'outgoing' && !message.isDeleted)
+            });
+        },
+        importantMessages() {
+            return this.messages.filter(function(message) {
+                return (message.type == 'incoming' && message.isImportant === true && !message.isDeleted)
+            });
+        },
+        trashedMessages() {
+            return this.messages.filter(function(message) {
+                return message.isDeleted === true 
+            });
         }
     }
 }
