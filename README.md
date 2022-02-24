@@ -32,3 +32,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - Bootstrap label classes not working for sidebar.
 - Inbox always active with navigation function.
+- Icons in table row clickable 
+
