@@ -24,6 +24,11 @@ export default {
             required: true
         }
     },
+    activated() {
+        if(this.data.message.isRead != 'undefined') {
+            this.data.message.isRead = true;
+        }
+    },
     filters: {
         formatBytes(bytes) {
             if (bytes == 0) {
