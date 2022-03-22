@@ -10,7 +10,7 @@ import Messages from "./Messages.vue"
 export default {
     props: {
         data: {
-            type: Array,
+            type: Object,
             required: true
         }
     },
