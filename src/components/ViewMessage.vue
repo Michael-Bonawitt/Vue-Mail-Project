@@ -1,8 +1,13 @@
 <template>
     <div class="inbox-body">
-        <button class="btn btn-primary" @click="navigateBack">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; Back
-        </button>
+        <div class="mail-option">
+            <button class="btn btn-primary" @click="navigateBack">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; Back
+            </button>&nbsp;
+            <button class="btn btn-danger" @click="data.message.isDeleted = true" :disabled="data.message.isDeleted">
+                <i class="fa fa-trash-o"></i>&nbsp; {{ data.message.isDeleted ? 'Deleted' : 'Delete' }}
+            </button>
+        </div>
         <p><strong>Data:</strong> {{ data.message.date.fromNow() }}</p>
         <p><strong>From:</strong> {{ data.message.from.name }} {{ data.message.from.email }}</p>
         <hr>
