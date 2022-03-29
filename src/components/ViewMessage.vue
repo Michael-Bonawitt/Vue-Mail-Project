@@ -4,9 +4,20 @@
             <button class="btn btn-primary" @click="navigateBack">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp; Back
             </button>&nbsp;
+
             <button class="btn btn-danger" @click="data.message.isDeleted = true" :disabled="data.message.isDeleted">
                 <i class="fa fa-trash-o"></i>&nbsp; {{ data.message.isDeleted ? 'Deleted' : 'Delete' }}
-            </button>
+            </button>&nbsp;
+
+            <template v-if="data.message.isRead !== 'undefine'">
+                <button class="btn btn-primary" @click="data.message.isRead = false" :disabled="!data.message.isRead">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp; Mark as unread
+                </button>&nbsp;
+
+                <button class="btn btn-primary" @click="data.message.isRead = true" :disabled="data.message.isRead">
+                    <i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp; Mark as read
+                </button>
+            </template>
         </div>
         <p><strong>Data:</strong> {{ data.message.date.fromNow() }}</p>
         <p><strong>From:</strong> {{ data.message.from.name }} {{ data.message.from.email }}</p>
